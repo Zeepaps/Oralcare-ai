@@ -77,8 +77,9 @@ st.markdown("---")
 
 # 5.2 The Analysis Button
 if st.button("🚀 Run AI Triage Analysis"):
-    st.balloons()
-    
+    with st.spinner("Agents are analyzing your symptoms..."):
+        # Run the "Agents"
+           
     # Run the "Agents"
     status_label, instruction = calculate_risk(sugar, pain, swelling, bleeding)
     clinic_link = get_clinic(location)
