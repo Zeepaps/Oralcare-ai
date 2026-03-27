@@ -63,24 +63,21 @@ def get_clinic(city):
     return clinics.get(city, "Nearest General Teaching Hospital")
 
 # 5. Dashboard Layout
-# 5.1 Historical Insight Chart (Visualizes the mockup data)
 st.subheader(f"📊 Oral Health Trends in {location}")
 try:
     df = pd.read_csv('nigerian_dental_data.csv')
     city_df = df[df['location'] == location]
     st.bar_chart(city_df['symptom_pain_level'].value_counts().sort_index())
     st.caption("Distribution of pain levels reported by other patients in your region.")
-except:
+except Exception as e:
     st.info("Historical data summary will appear here once the dataset is loaded.")
 
 st.markdown("---")
 
-# 5.2 The Analysis Button
+# 5.2 The Analysis Button (Corrected Indentation)
 if st.button("🚀 Run AI Triage Analysis"):
     with st.spinner("Agents are analyzing your symptoms..."):
-        # Run the "Agents"
-           
-    # Run the "Agents"
+        # These lines are correctly indented inside the spinner
         status_label, instruction = calculate_risk(sugar, pain, swelling, bleeding)
         clinic_link = get_clinic(location)
     
@@ -101,4 +98,4 @@ if st.button("🚀 Run AI Triage Analysis"):
         st.info("Medical Disclaimer: This AI tool provides triage guidance only. It is not a formal medical diagnosis.")
 
 # 6. Footer
-st.markdown("<br><hr><center>Built by [Ayomide Zaccheaus] | Dataraflow Internship Project 2026</center>", unsafe_allow_html=True)
+st.markdown("<br><hr><center>Built by [Your Name] | Dataraflow Internship Project 2026</center>", unsafe_allow_html=True)
