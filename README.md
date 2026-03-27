@@ -44,14 +44,13 @@ The system uses a **Sequential Pipeline Pattern**. Each agent has a specific "Sy
 ---
 
 ## 🔧 Installation & Local Setup
-# 1. Clone the repository
-git clone https://github.com/your-username/oralcare-ai.git
-cd oralcare-ai
+### 1. Clone the repository
+git clone https://github.com/your-username/oralcare-ai.git cd oralcare-ai
 
-# 2. Install required Python libraries
-pip install -r requirements.txt
+### 2. Install required Python libraries
+| pip install -r requirements.txt
 
-# 3. Launch the Streamlit dashboard
+### 3. Launch the Streamlit dashboard
 streamlit run app.py
 
 ## 📊 Feature Highlights & Agents
