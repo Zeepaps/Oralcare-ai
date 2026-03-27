@@ -19,7 +19,7 @@ st.markdown("""
         color: white;
     }
     </style>
-    """, unsafe_allow_value=True)
+    """, unsafe_allow_html=True)
 
 col1, col2 = st.columns([1, 6])
 with col1:
