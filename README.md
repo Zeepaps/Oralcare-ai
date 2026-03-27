@@ -78,10 +78,11 @@ streamlit run app.py
 
  ## 👩🏾‍💻 Author & Professional Identity
 **Ayomide Zaccheaus**
-**Role:** Data Science Intern at Dataraflow
-**Project:** GenAI Multi-Agent Assignment
-**- GitHub:** [@zeepaps](https://github.com/zeepaps)
-**- ORCID:** [0009-0004-0488-172X](https://orcid.org/0009-0004-0488-172X)
+
+- Role: Data Science Intern at Dataraflow
+- Project: GenAI Multi-Agent Assignment
+- GitHub: [@zeepaps](https://github.com/zeepaps)
+- ORCID: [0009-0004-0488-172X](https://orcid.org/0009-0004-0488-172X)
 
 ---
 
