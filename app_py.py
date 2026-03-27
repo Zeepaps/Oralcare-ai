@@ -81,8 +81,8 @@ if st.button("🚀 Run AI Triage Analysis"):
         # Run the "Agents"
            
     # Run the "Agents"
-    status_label, instruction = calculate_risk(sugar, pain, swelling, bleeding)
-    clinic_link = get_clinic(location)
+        status_label, instruction = calculate_risk(sugar, pain, swelling, bleeding)
+        clinic_link = get_clinic(location)
     
     # Display Results in Metric Cards
     m_col1, m_col2, m_col3 = st.columns(3)
