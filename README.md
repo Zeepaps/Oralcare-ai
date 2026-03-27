@@ -44,14 +44,21 @@ The system uses a **Sequential Pipeline Pattern**. Each agent has a specific "Sy
 ---
 
 ## 🔧 Installation & Local Setup
-### 1. Clone the repository
-git clone https://github.com/your-username/oralcare-ai.git cd oralcare-ai
+**1. Clone the repo**
+```bash
+git clone https://github.com/zeepaps/oralcare-ai.git
+cd oralcare-ai
+```
 
-### 2. Install required Python libraries
-| pip install -r requirements.txt
+**2. Install dependencies**
+```bash
+pip install -r requirements.txt
+```
 
-### 3. Launch the Streamlit dashboard
+**3. Run the app**
+```bash
 streamlit run app.py
+```
 
 ## 📊 Feature Highlights & Agents
 [SymptomAnalyst] 
@@ -70,9 +77,11 @@ streamlit run app.py
 - Output: Nearest Tertiary Dental Center (LUTH, UCH, etc.)
 
  ## 👩🏾‍💻 Author & Professional Identity
-Name: Ayomide Zaccheaus
-Role: Data Science Intern at Dataraflow
-Project: GenAI Multi-Agent Assignment
+**Ayomide Zaccheaus**
+**Role:** Data Science Intern at Dataraflow
+**Project:** GenAI Multi-Agent Assignment
+**- GitHub:** [@zeepaps](https://github.com/zeepaps)
+**- ORCID:** [0009-0004-0488-172X](https://orcid.org/0009-0004-0488-172X)
 
-ORCID iD: 0009-0004-0488-172X
-GitHub: @zeepaps
+---
+
