@@ -1,46 +1,53 @@
-# 🦷 OralCare AI: Multi-Agent Dental Triage System (Nigeria)
+# # 🦷 OralCare AI: Multi-Agent Dental Triage System
 
-A specialized **Multi-Agent GenAI System** built during my internship at **Dataraflow**. This application leverages a sequential agent pipeline to provide real-time dental triage and facility referrals for users across Nigeria.
+**A Generative AI Solution for Accessible Oral Healthcare in Nigeria**
 
----
-
-##  Project Overview
-OralCare AI addresses the critical gap in dental health accessibility. In many regions, professional dental advice is delayed; this system acts as a "First-Response" diagnostic dashboard. It processes patient symptoms through a specialized AI pipeline to categorize urgency and provide localized hospital referrals.
-
-> **Note:** This project utilizes a custom **Mockup Dataset** of 1,000+ Nigerian dental patient profiles (simulating age, location, sugar intake, and pain levels) to demonstrate data-driven decision-making.
+OralCare AI addresses the critical gap in dental health accessibility. In many regions, professional dental advice is delayed; this system acts as a **"First-Response" diagnostic dashboard**. It processes patient symptoms through a specialized Generative AI pipeline to categorize urgency and provide localized hospital referrals.
 
 ---
 
-## 🏗️ Multi-Agent Architecture
-The system uses a **Sequential Pipeline Pattern**. Each agent has a specific "System Prompt" and responsibility, passing its findings to the next stage of the report.
-
-### 🤖 The Agent Team
-| Agent Role | Responsibility | Logic Pattern |
-| :--- | :--- | :--- |
-| **SymptomAnalyst** | Performs clinical triage based on pain, swelling, and bleeding. | **Triage Logic** |
-| **DietaryRiskAgent** | Analyzes lifestyle impact (e.g., sugar intake) on future oral health. | **Risk Assessment** |
-| **AccessOrchestrator** | Maps the user to the nearest Nigerian Teaching Hospital (LUTH, UCH, UNTH, etc.). | **Geospatial Referral** |
+### 🎓 Academic & Professional Context
+* **Program:** Generative AI & Data Science Course
+* **Internship:** Dataraflow Data Science Program
+* **Focus:** Multi-Agent Orchestration, Azure OpenAI Integration, and Healthcare Analytics.
 
 ---
 
-## 🛠️ Tech Stack
-* **Core Logic:** Python 3.10+
-* **LLM Integration:** Azure OpenAI (GPT-4o) / Rule-based Agent Logic
-* **Web Framework:** [Streamlit](https://streamlit.io)
-* **Data Science:** Pandas, NumPy (for processing the 1,000-row patient dataset)
-* **Deployment:** Streamlit Community Cloud
-* **Visualization:** Native Streamlit Charts (Bar charts for regional pain-level trends)
+###  Live Demo
+🔗 **[Insert your Streamlit Link Here]**
 
 ---
 
-##  Project Requirements Coverage
-- **[x] Real/Mock Dataset (500+ rows):** Uses a generated 1,000-row `nigerian_dental_data.csv`.
-- **[x] 3+ Specialized Agents:** SymptomAnalyst, DietaryRiskAgent, and AccessOrchestrator.
-- **[x] Multi-Agent Pattern:** Implements a Sequential Workflow.
-- **[x] Custom Tools:** Functional Python tools for `calculate_risk` and `get_clinic` mapping.
-- **[x] Data Visualization:** Interactive bar charts showing regional dental trends.
-- **[x] User Interface:** Full Streamlit dashboard with sidebar inputs and metric cards.
+###  Technical Architecture: The "Multi-Agent" Pipeline
+Unlike standard chatbots, OralCare AI utilizes a **Multi-Agent Orchestration** pattern. When a patient submits data, the system triggers two specialized agents via **Azure OpenAI (GPT-4o)**:
 
+1.  **SymptomAnalyst Agent:** Evaluates clinical variables (Pain level, Age, Swelling, Bleeding) to determine triage urgency.
+2.  **PatientCounselor Agent:** Analyzes lifestyle factors (e.g., Sugar Intake) to provide empathetic, personalized health advice and reduce patient anxiety.
+3.  **AccessOrchestrator:** Maps the patient's location to the nearest Nigerian tertiary health institution (e.g., LUTH, UCH, AKTH).
+
+---
+
+### 📊 Data & Insights
+This project utilizes a custom **Synthetic Dataset** of 1,000+ Nigerian dental patient profiles. 
+* **Key Features:** Age, Location (Lagos, Abuja, etc.), Sugar Intake, and Pain Intensity.
+* **Visualization:** Integrated Streamlit charts to show regional dental trends, simulating how a healthcare administrator would monitor public health.
+
+---
+
+### 💻 Tech Stack
+* **Frontend:** Streamlit (Python-based Web Framework)
+* **LLM Provider:** Azure OpenAI Service (GPT-4o)
+* **Data Handling:** Pandas & NumPy
+* **Security:** Streamlit Secrets Management (Environment Variables)
+
+---
+
+### 📂 Project Structure
+```text
+├── app.py                   # Main Application Logic & AI Agents
+├── requirements.txt         # Python Dependencies (Streamlit, OpenAI)
+├── nigerian_dental_data.csv    # Synthetic Patient Dataset
+└── README.md                # Project Documentation
 ---
 
 ## 🔧 Installation & Local Setup
