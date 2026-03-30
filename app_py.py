@@ -70,4 +70,4 @@ if st.button("🚀 Run AI Triage Analysis"):
             st.info("Note: This is an AI assessment for triage purposes only.")
 
 # Footer
-st.markdown("<br><hr><center>Built by [Your Name] | Dataraflow Internship 2026</center>", unsafe_allow_html=True)
+st.markdown("<br><hr><center>Built by **Ayomide Zaccheaus** | Dataraflow Internship 2026</center>", unsafe_allow_html=True)
