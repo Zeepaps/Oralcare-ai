@@ -14,7 +14,8 @@ OralCare AI addresses the critical gap in dental health accessibility. In many r
 ---
 
 ###  Live Demo
-🔗 **[Insert your Streamlit Link Here]**
+🔗 **oralcare-ai.streamlit.app**
+
 
 ---
 
