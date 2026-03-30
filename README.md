@@ -1,4 +1,4 @@
-# # 🦷 OralCare AI: Multi-Agent Dental Triage System
+## 🦷 OralCare AI: Multi-Agent Dental Triage System
 
 **A Generative AI Solution for Accessible Oral Healthcare in Nigeria**
 
