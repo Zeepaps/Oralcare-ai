@@ -1,4 +1,4 @@
-[OralCare AI - demo.html](https://github.com/user-attachments/files/26347801/OralCare.AI.-.demo.html)## 🦷 OralCare AI: Multi-Agent Dental Triage System
+## 🦷 OralCare AI: Multi-Agent Dental Triage System
 
 **A Generative AI Solution for Accessible Oral Healthcare in Nigeria**
 
@@ -15,9 +15,11 @@ OralCare AI addresses the critical gap in dental health accessibility. In many r
 
 ###  Live Demo
 🔗 **oralcare-ai.streamlit.app**
-[1fdb7316-2a70-496b-a10e-a2ba3d9b02a2.webm](https://github.com/user-attachments/assets/7f3d59ad-42df-4596-82cf-3fb49e2931d1)
+<video src="[1fdb7316-2a70-496b-a10e-a2ba3d9b02a2.webm]" width="100%" controls>
+  Your browser does not support the video tag.
+</video> (https://github.com/user-attachments/assets/7f3d59ad-42df-4596-82cf-3fb49e2931d1)
 
-
+[OralCare AI - demo.html](https://github.com/user-attachments/files/26347801/OralCare.AI.-.demo.html)
 ---
 
 ###  Technical Architecture: The "Multi-Agent" Pipeline
