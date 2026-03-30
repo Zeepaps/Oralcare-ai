@@ -9,7 +9,7 @@ st.set_page_config(page_title="OralCare AI - Nigeria", page_icon="🦷", layout=
 try:
     client = AzureOpenAI(
         api_key=st.secrets["AZURE_OPENAI_API_KEY"],  
-        api_version="2024-02-01", 
+        api_version="2024-08-01-preview", # Best version for gpt-4o models
         azure_endpoint=st.secrets["AZURE_OPENAI_ENDPOINT"]
     )
 except Exception as e:
