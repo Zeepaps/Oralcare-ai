@@ -1,101 +1,73 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
+from openai import AzureOpenAI
 
-# 1. Page Config (Must be the first Streamlit command)
+# 1. Page Config
 st.set_page_config(page_title="OralCare AI - Nigeria", page_icon="🦷", layout="wide")
 
-# 2. Professional Header & Styling
+# 2. Azure OpenAI Client Setup (Pulls from Secrets)
+client = AzureOpenAI(
+    api_key=st.secrets["AZURE_OPENAI_API_KEY"],  
+    api_version="2024-02-15-preview",
+    azure_endpoint=st.secrets["AZURE_OPENAI_ENDPOINT"]
+)
+
+# 3. Professional Styling
 st.markdown("""
     <style>
-    .main {
-        background-color: #f5f7f9;
-    }
-    .stButton>button {
-        width: 100%;
-        border-radius: 5px;
-        height: 3em;
-        background-color: #007BFF;
-        color: white;
-    }
+    .stButton>button { width: 100%; border-radius: 5px; height: 3em; background-color: #007BFF; color: white; }
     </style>
     """, unsafe_allow_html=True)
 
-col1, col2 = st.columns([1, 6])
-with col1:
-    st.title("🦷")
-with col2:
-    st.title("OralCare AI: Dental Triage")
-    st.write("_Smart Dental Health Assessment for Nigeria_")
-
-st.sidebar.success("✅ System Online: Dataraflow Intern Project")
+st.title("🦷 OralCare AI: Multi-Agent Triage")
+st.write("_Powered by Azure GPT-4o_")
 st.markdown("---")
 
-# 3. Sidebar for User Input
+# 4. Sidebar Inputs
 st.sidebar.header("📋 Patient Profile")
-age = st.sidebar.slider("Age", 1, 100, 25)
 location = st.sidebar.selectbox("Location", ["Lagos", "Abuja", "Ibadan", "Kano", "Enugu"])
 sugar = st.sidebar.select_slider("Daily Sugar Intake", options=["Low", "Medium", "High"])
-pain = st.sidebar.slider("Pain Level (0-10)", 0, 10, 2)
+pain = st.sidebar.slider("Pain Level (0-10)", 0, 10, 5)
 swelling = st.sidebar.checkbox("Is there any visible swelling?")
-bleeding = st.sidebar.checkbox("Are your gums bleeding?")
 
-# 4. Logic Tools
-def calculate_risk(sugar, pain, swelling, bleeding):
-    score = 0
-    if sugar == "High": score += 2
-    if pain > 7: score += 4
-    if swelling: score += 4
-    if bleeding: score += 2
+# 5. The "Brain" - Multi-Agent Function
+def get_ai_diagnosis(sugar, pain, swelling, location):
+    # This acts as the "Orchestrator" Agent
+    prompt = f"""
+    You are a Dental Triage AI for Nigeria. 
+    Patient Data:
+    - Location: {location}
+    - Pain: {pain}/10
+    - Swelling: {swelling}
+    - Sugar Intake: {sugar}
+
+    Provide a 2-sentence professional assessment and suggest a specific Nigerian hospital from this list: 
+    LUTH (Lagos), National Hospital (Abuja), UCH (Ibadan), AKTH (Kano), or UNTH (Enugu).
+    """
     
-    if score >= 8: return "🔴 EMERGENCY", "Please seek immediate care at a dental emergency ward."
-    if score >= 5: return "🟡 URGENT", "Schedule a dental appointment within the next 48 hours."
-    return "🟢 ROUTINE", "No immediate danger. Schedule a regular check-up."
+    response = client.chat.completions.create(
+        model=st.secrets["AZURE_OPENAI_DEPLOYMENT_NAME"],
+        messages=[{"role": "system", "content": "You are a helpful dental assistant."},
+                  {"role": "user", "content": prompt}]
+    )
+    return response.choices[0].message.content
 
-def get_clinic(city):
-    clinics = {
-        'Lagos': 'LUTH Dental Clinic, Idi-Araba',
-        'Abuja': 'National Hospital Dental Wing',
-        'Ibadan': 'UCH Dental Center',
-        'Kano': 'Aminu Kano Teaching Hospital',
-        'Enugu': 'UNTH Dental School'
-    }
-    return clinics.get(city, "Nearest General Teaching Hospital")
-
-# 5. Dashboard Layout
-st.subheader(f"📊 Oral Health Trends in {location}")
-try:
-    df = pd.read_csv('nigerian_dental_data.csv')
-    city_df = df[df['location'] == location]
-    st.bar_chart(city_df['symptom_pain_level'].value_counts().sort_index())
-    st.caption("Distribution of pain levels reported by other patients in your region.")
-except Exception as e:
-    st.info("Historical data summary will appear here once the dataset is loaded.")
-
-st.markdown("---")
-
-# 5.2 The Analysis Button (Corrected Indentation)
+# 6. Run Analysis
 if st.button("🚀 Run AI Triage Analysis"):
-    with st.spinner("Agents are analyzing your symptoms..."):
-        # These lines are correctly indented inside the spinner
-        status_label, instruction = calculate_risk(sugar, pain, swelling, bleeding)
-        clinic_link = get_clinic(location)
-    
-    # Display Results in Metric Cards
-    m_col1, m_col2, m_col3 = st.columns(3)
-    with m_col1:
-        st.metric(label="Urgency Level", value=status_label)
-    with m_col2:
-        st.metric(label="Primary Symptom", value=f"Pain {pain}/10")
-    with m_col3:
-        st.metric(label="Recommended City", value=location)
+    with st.spinner("SymptomAnalyst & AccessOrchestrator agents are communicating..."):
+        # Real AI Call
+        ai_report = get_ai_diagnosis(sugar, pain, swelling, location)
+        
+        # Display Results
+        col1, col2 = st.columns(2)
+        with col1:
+            st.metric(label="Pain Intensity", value=f"{pain}/10")
+        with col2:
+            st.metric(label="Status", value="AI Analyzed")
 
-    # Final Detailed Report
-    with st.expander("📄 View Detailed AI Report", expanded=True):
-        st.write(f"### Assessment: {status_label}")
-        st.write(instruction)
-        st.success(f"**Referral:** Proceed to **{clinic_link}**")
-        st.info("Medical Disclaimer: This AI tool provides triage guidance only. It is not a formal medical diagnosis.")
+        with st.expander("📄 Official AI Medical Report", expanded=True):
+            st.write(ai_report)
+            st.info("Note: This is an AI assessment for triage purposes only.")
 
-# 6. Footer
-st.markdown("<br><hr><center>Built by [Your Name] | Dataraflow Internship Project 2026</center>", unsafe_allow_html=True)
+# Footer
+st.markdown("<br><hr><center>Built by [Your Name] | Dataraflow Internship 2026</center>", unsafe_allow_html=True)
